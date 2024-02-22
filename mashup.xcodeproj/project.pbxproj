@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0ADF512B862DE500DD1845 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADF502B862DE500DD1845 /* SearchButton.swift */; };
+		AA0FC72D2B874A7200848A13 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA0FC72C2B874A7100848A13 /* README.md */; };
+		AA0FC72F2B874B2600848A13 /* ArtistName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC72E2B874B2600848A13 /* ArtistName.swift */; };
+		AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */; };
 		AA480DC12B85F66F00BE36A7 /* mashupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DC02B85F66F00BE36A7 /* mashupApp.swift */; };
 		AA480DC32B85F66F00BE36A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DC22B85F66F00BE36A7 /* ContentView.swift */; };
 		AA480DC52B85F67300BE36A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA480DC42B85F67300BE36A7 /* Assets.xcassets */; };
@@ -14,6 +18,7 @@
 		AA480DD32B85F67400BE36A7 /* mashupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DD22B85F67400BE36A7 /* mashupTests.swift */; };
 		AA480DDD2B85F67400BE36A7 /* mashupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DDC2B85F67400BE36A7 /* mashupUITests.swift */; };
 		AA480DDF2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DDE2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift */; };
+		AA49FD3E2B87AB5900B35F12 /* MusicBrainz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA0ADF502B862DE500DD1845 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		AA0FC72C2B874A7100848A13 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; fileEncoding = 4; path = README.md; sourceTree = SOURCE_ROOT; };
+		AA0FC72E2B874B2600848A13 /* ArtistName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistName.swift; sourceTree = "<group>"; };
+		AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDescription.swift; sourceTree = "<group>"; };
 		AA480DBD2B85F66F00BE36A7 /* mashup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mashup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA480DC02B85F66F00BE36A7 /* mashupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mashupApp.swift; sourceTree = "<group>"; };
 		AA480DC22B85F66F00BE36A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +54,7 @@
 		AA480DD82B85F67400BE36A7 /* mashupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mashupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA480DDC2B85F67400BE36A7 /* mashupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mashupUITests.swift; sourceTree = "<group>"; };
 		AA480DDE2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mashupUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrainz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				AA480DC02B85F66F00BE36A7 /* mashupApp.swift */,
+				AA0FC72C2B874A7100848A13 /* README.md */,
+				AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */,
+				AA0ADF502B862DE500DD1845 /* SearchButton.swift */,
+				AA0FC72E2B874B2600848A13 /* ArtistName.swift */,
+				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
 				AA480DC42B85F67300BE36A7 /* Assets.xcassets */,
 				AA480DC62B85F67300BE36A7 /* mashup.entitlements */,
@@ -233,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0FC72D2B874A7200848A13 /* README.md in Resources */,
 				AA480DC92B85F67300BE36A7 /* Preview Assets.xcassets in Resources */,
 				AA480DC52B85F67300BE36A7 /* Assets.xcassets in Resources */,
 			);
@@ -259,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */,
+				AA49FD3E2B87AB5900B35F12 /* MusicBrainz.swift in Sources */,
 				AA480DC32B85F66F00BE36A7 /* ContentView.swift in Sources */,
 				AA480DC12B85F66F00BE36A7 /* mashupApp.swift in Sources */,
+				AA0ADF512B862DE500DD1845 /* SearchButton.swift in Sources */,
+				AA0FC72F2B874B2600848A13 /* ArtistName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,9 +437,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mashup/mashup.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mashup/Preview Content\"";
+				DEVELOPMENT_TEAM = XJQ84F8VSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -440,7 +462,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fransenglich.mashup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -453,9 +475,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mashup/mashup.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mashup/Preview Content\"";
+				DEVELOPMENT_TEAM = XJQ84F8VSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -476,7 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fransenglich.mashup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
