@@ -19,6 +19,8 @@
 		AA480DDD2B85F67400BE36A7 /* mashupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DDC2B85F67400BE36A7 /* mashupUITests.swift */; };
 		AA480DDF2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DDE2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift */; };
 		AA49FD3E2B87AB5900B35F12 /* MusicBrainz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */; };
+		AACE39002B8C943300DFBB06 /* artist.json in Resources */ = {isa = PBXBuildFile; fileRef = AACE38FF2B8C943300DFBB06 /* artist.json */; };
+		AACE39022B8CB7E500DFBB06 /* argentina.json in Resources */ = {isa = PBXBuildFile; fileRef = AACE39012B8CB7E500DFBB06 /* argentina.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		AA480DDC2B85F67400BE36A7 /* mashupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mashupUITests.swift; sourceTree = "<group>"; };
 		AA480DDE2B85F67400BE36A7 /* mashupUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mashupUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrainz.swift; sourceTree = "<group>"; };
+		AACE38FF2B8C943300DFBB06 /* artist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artist.json; sourceTree = "<group>"; };
+		AACE39012B8CB7E500DFBB06 /* argentina.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = argentina.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		AA480DBF2B85F66F00BE36A7 /* mashup */ = {
 			isa = PBXGroup;
 			children = (
+				AACE38FF2B8C943300DFBB06 /* artist.json */,
+				AACE39012B8CB7E500DFBB06 /* argentina.json */,
 				AA480DC02B85F66F00BE36A7 /* mashupApp.swift */,
 				AA0FC72C2B874A7100848A13 /* README.md */,
 				AA49FD3D2B87AB5900B35F12 /* MusicBrainz.swift */,
@@ -249,7 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0FC72D2B874A7200848A13 /* README.md in Resources */,
+				AACE39022B8CB7E500DFBB06 /* argentina.json in Resources */,
 				AA480DC92B85F67300BE36A7 /* Preview Assets.xcassets in Resources */,
+				AACE39002B8C943300DFBB06 /* artist.json in Resources */,
 				AA480DC52B85F67300BE36A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
