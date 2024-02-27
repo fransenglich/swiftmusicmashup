@@ -29,7 +29,23 @@ struct Artist : Codable {
         self.area = area
     }
 
+    init(fromMB: MBService.MBArtist) {
+        if let name = fromMB.name,
+           let n = fromMB.name {
+            self.name = n
+        } else {
+            name = ""
+        }
+
+        if let a = fromMB.area,
+           let n = a.name {
+            self.area = n
+        } else {
+            area = ""
+        }
+    }
 }
+
 
 /**
  Full representation of the JSON return from Music Brainz' API.
@@ -51,13 +67,14 @@ struct MBService: Decodable {
         let sort_name: String?
         let country: String?
         let area: MBArea?
-        /*let begin_area: MBBeginArea?
+        let begin_area: MBBeginArea?
         let disambiguation: String?
-        let isnis: String?
-        let life_span: MBLifeSpan?
+        let isnis: [String]?
+
+           let life_span: MBLifeSpan?
         let aliases: [MBAlias]?
-        let tags: [MBTag]?
-         */
+          let tags: [MBTag]?
+
 
         private enum CodingKeys: String, CodingKey {
             case id
@@ -66,16 +83,15 @@ struct MBService: Decodable {
             case score
             case name
             case sort_name = "sort-name"
-            //case country
-            //case country
-            case area/*
+            case country
+            case area
             case begin_area = "begin-area"
             case disambiguation
             case isnis
-            case life_span = "life-span"
-            case aliases
+                   case life_span = "life-span"
+                 case aliases
             case tags
-             */
+
         }
 
         struct MBArea: Decodable {
@@ -130,7 +146,7 @@ struct MBService: Decodable {
             let name: String?
             let locale: String?
             let type: String?
-            let primary: String?
+            let primary: Bool?
             let begin_date: String?
             let end_date: String?
 
@@ -200,7 +216,6 @@ struct ContentView: View {
                     print("Invalid Response")
                 }
                  */
-
                 var serviceReturn: MBService
 
                 do {
@@ -229,7 +244,8 @@ struct ContentView: View {
                     """
 
                     //let debugData = Data(debugString.utf8)
-                   serviceReturn = try JSONDecoder().decode(MBService.self, from: data)
+                    serviceReturn = try JSONDecoder().decode(MBService.self, from: data)
+                    print (serviceReturn)
                 }
                 catch DecodingError.dataCorrupted {
                     print("JSON corrupt")
@@ -237,6 +253,7 @@ struct ContentView: View {
                 catch {
                     print("JSON decoding error: \(error)")
                 }
+
 
                 /*
                 if let artists = try? JSONDecoder().decode([Artist].self, from: data) {
