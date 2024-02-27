@@ -31,24 +31,24 @@ struct Artist : Codable {
 
     init(fromMB: MBService.MBArtist) {
         if let name = fromMB.name,
-           let n = fromMB.name {
-            self.name = n
+           let name = fromMB.name {
+            self.name = name
         } else {
-            name = ""
+            self.name = ""
         }
 
-        if let a = fromMB.area,
-           let n = a.name {
-            self.area = n
+        if let area = fromMB.area,
+           let name = area.name {
+            self.area = name
         } else {
-            area = ""
+            self.area = ""
         }
     }
 }
 
 
 /**
- Full representation of the JSON return from Music Brainz' API.
+ Full representation of the JSON return from Music Brainz' API artist query.
 
  We don't need all data, hence we use this intermediate structure for discarding parts of it.
  */
@@ -275,12 +275,15 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            ArtistName()
-                //.navigationTitle("Searchable example")
-                .searchable(text: $searchText, prompt: "Search for artist")
+
+
+                .searchable(text: $searchText,
+                            prompt: "Search for artist")
+
 
             //ArtistDescription()
             //let v = ArtistDescription()
