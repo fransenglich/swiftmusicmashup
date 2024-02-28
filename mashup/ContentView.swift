@@ -46,7 +46,6 @@ struct Artist : Codable {
     }
 }
 
-
 /**
  Full representation of the JSON return from Music Brainz' API artist query.
 
@@ -71,9 +70,9 @@ struct MBService: Decodable {
         let disambiguation: String?
         let isnis: [String]?
 
-           let life_span: MBLifeSpan?
+        let life_span: MBLifeSpan?
         let aliases: [MBAlias]?
-          let tags: [MBTag]?
+        let tags: [MBTag]?
 
 
         private enum CodingKeys: String, CodingKey {
@@ -88,8 +87,8 @@ struct MBService: Decodable {
             case begin_area = "begin-area"
             case disambiguation
             case isnis
-                   case life_span = "life-span"
-                 case aliases
+            case life_span = "life-span"
+            case aliases
             case tags
 
         }
@@ -169,16 +168,52 @@ struct MBService: Decodable {
     }
 }
 
+// Good on binding/state: https://blog.devgenius.io/swiftui-state-vs-binding-727262600884
+
+/**
+ TODO docs
+ */
+/*
+func replaceWS(_ input: String) -> String {
+    // TODO: do it the Swift way
+    var retval = String()
+
+    for i in input.indices {
+        if(input[i] == " ") {
+            retval.append("%20")
+        }
+        else {
+            retval.append(input[i])
+        }
+    }
+
+    return retval
+}
+*/
+
 struct ContentView: View {
     @State private var searchText: String = ""
     @State private var loadedData: String = ""
 
     func actionSearch() {
+        loadData(artist: searchText)
     }
 
-    func loadData() {
+    func loadData(artist: String) {
+        /*
         let url = URL(string: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json")!
+         */
+        var encoded: String = artist.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
 
+        print(encoded)
+
+        let url = URL(string:
+                        "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
+
+
+
+// Timer: https://stackoverflow.com/questions/58363563/swiftui-get-notified-when-binding-value-changes
+        
 // FAILS: "https://musicbrainz.org/ws/2/artist/?fmt=json?query=artist:the%20beatles"
 // WORKS: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json"
 
@@ -275,16 +310,16 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+           // bindingSearchText = searchText
 
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
 
-
-                .searchable(text: $searchText,
+               /* .searchable(text: $searchText,
                             prompt: "Search for artist")
 
-
+                */
             //ArtistDescription()
             //let v = ArtistDescription()
             //v.webView
@@ -293,9 +328,11 @@ struct ContentView: View {
             //SearchButton()
 
             HStack {
+                SearchField(binding: $searchText)
+              //  ArtistName(bindingSee)
                 HTTPDataView(data: $loadedData)
                 Button("Search", action: actionSearch)
-                Button("Load", action: loadData)
+              //  Button("Load", action: loadData)
             }
 
         }

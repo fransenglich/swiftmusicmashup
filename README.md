@@ -18,9 +18,10 @@ Output/Interface:
     Lista av album, med namn och coverbild
 
 Possible improvements
-There are no limits to the amounts of features and polishing that is possible, but here are some more obvious andcrucial ones:
+There are no limits to the amounts of features and polishing that is possible, but here are some more obvious and crucial ones:
 
-* Error handling/robustness of responses from Wikipedia's API
+* Robustness for Music Brainz' API. MB's MMD format needs to be taken into account
+* Error handling/robustness of responses from the APIs
 * Currently hardcoded on English Wikipedia. Extend for different languages
 * Generally error handling, many errors currently leads to segfaults
 * Populate the search results incrementally
