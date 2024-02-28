@@ -21,151 +21,54 @@ struct HTTPDataView: View {
 A representation of a Music Brainz artist.
 */
 struct Artist : Codable {
+    /**
+        Music Brainz' internal ID for artists.
+     */
+    let id: String
+
+    /**
+        The name, for instance "The Beatles", without quotes.
+     */
     let name: String
+
+    /**
+        Geographical location of the artist, for instance "England".
+     */
     let area: String
 
-    init(name: String, area: String) {
+    init(id: String, name: String, area: String) {
+        self.id = id
         self.name = name
         self.area = area
     }
 
-    init(fromMB: MBService.MBArtist) {
-        if let name = fromMB.name,
-           let name = fromMB.name {
+    init(_ from: MBArtists.MBArtist) {
+        id = from.id
+        name = from.name
+
+        /*
+        if let name = from.name {
             self.name = name
         } else {
             self.name = ""
         }
+         */
 
-        if let area = fromMB.area,
+        if let area = from.area,
            let name = area.name {
             self.area = name
         } else {
-            self.area = ""
+            self.area = String()
         }
+
     }
 }
 
-/**
- Full representation of the JSON return from Music Brainz' API artist query.
+func extractArtists(from: MBArtists) -> [Artist] {
+    var retval: [Artist]
 
- We don't need all data, hence we use this intermediate structure for discarding parts of it.
- */
-struct MBService: Decodable {
-    let created: String
-    let count: Int
-    let offset: Int
-    let artists: [MBArtist]
-
-    struct MBArtist: Decodable {
-        let id: String
-        let type: String?
-        let type_id: String?
-        let score: Int?
-        let name: String?
-        let sort_name: String?
-        let country: String?
-        let area: MBArea?
-        let begin_area: MBBeginArea?
-        let disambiguation: String?
-        let isnis: [String]?
-
-        let life_span: MBLifeSpan?
-        let aliases: [MBAlias]?
-        let tags: [MBTag]?
-
-
-        private enum CodingKeys: String, CodingKey {
-            case id
-            case type
-            case type_id = "type-id"
-            case score
-            case name
-            case sort_name = "sort-name"
-            case country
-            case area
-            case begin_area = "begin-area"
-            case disambiguation
-            case isnis
-            case life_span = "life-span"
-            case aliases
-            case tags
-
-        }
-
-        struct MBArea: Decodable {
-            let id: String?
-            let type: String?
-            let type_id: String?
-            let name: String?
-            let sort_name: String?
-            let life_span: MBEnded?
-
-            private enum CodingKeys: String, CodingKey {
-                case id
-                case type
-                case type_id = "string"
-                case name
-                case sort_name = "sort-name"
-                case life_span = "life-span"
-            }
-        }
-
-        struct MBEnded: Decodable {
-            let ended: String?
-        }
-
-        struct MBBeginArea: Decodable {
-            let id: String?
-            let type: String?
-            let type_id: String?
-            let name: String?
-            let sort_name: String?
-            let life_span: MBEnded?
-
-            private enum CodingKeys: String, CodingKey {
-                case id
-                case type
-                case name
-                case type_id = "type-id"
-                case sort_name = "sort-name"
-                case life_span = "life-span"
-            }
-        }
-
-        struct MBLifeSpan: Decodable {
-            let begin: String?
-            let end: String?
-            let ended: Bool?
-        }
-
-        struct MBAlias: Decodable {
-            let sort_name: String?
-            let type_id: String?
-            let name: String?
-            let locale: String?
-            let type: String?
-            let primary: Bool?
-            let begin_date: String?
-            let end_date: String?
-
-            private enum CodingKeys: String, CodingKey {
-                case name
-                case locale
-                case type
-                case primary
-                case sort_name = "sort-name"
-                case type_id = "type-id"
-                case begin_date = "begin-date"
-                case end_date = "end-date"
-            }
-        }
-
-        struct MBTag: Decodable {
-            let count: Int?
-            let name: String?
-        }
-    }
+    retval = from.artists.map({Artist($0)})
+    return retval
 }
 
 // Good on binding/state: https://blog.devgenius.io/swiftui-state-vs-binding-727262600884
@@ -203,14 +106,18 @@ struct ContentView: View {
         /*
         let url = URL(string: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json")!
          */
-        var encoded: String = artist.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+        let encoded = artist.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
 
         print(encoded)
 
         let url = URL(string:
                         "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
 
+        /*
 
+    "https://musicbrainz.org/ws/2/release/?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&fmt=json"
+
+         */
 
 // Timer: https://stackoverflow.com/questions/58363563/swiftui-get-notified-when-binding-value-changes
         
@@ -251,9 +158,10 @@ struct ContentView: View {
                     print("Invalid Response")
                 }
                  */
-                var serviceReturn: MBService
+                var serviceReturn: MBArtists
 
                 do {
+                    /*
                     let debugString = """
                     {"created":"2024-02-23T14:52:48.123Z",
                     "count":110478,
@@ -277,10 +185,14 @@ struct ContentView: View {
                     ]
                     }
                     """
-
+*/
                     //let debugData = Data(debugString.utf8)
-                    serviceReturn = try JSONDecoder().decode(MBService.self, from: data)
-                    print (serviceReturn)
+                    serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data)
+
+                    let artists: [Artist] = extractArtists(from: serviceReturn)
+
+                 //   print (serviceReturn)
+                 //   print ("Artists: \(artists)")
                 }
                 catch DecodingError.dataCorrupted {
                     print("JSON corrupt")
@@ -312,6 +224,7 @@ struct ContentView: View {
         VStack {
            // bindingSearchText = searchText
 
+
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
@@ -334,7 +247,6 @@ struct ContentView: View {
                 Button("Search", action: actionSearch)
               //  Button("Load", action: loadData)
             }
-
         }
         .padding()
     }
