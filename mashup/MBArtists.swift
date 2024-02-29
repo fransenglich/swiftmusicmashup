@@ -11,6 +11,8 @@ import Foundation
  Full representation of the JSON return from Music Brainz' API artist query.
 
  We don't need all data, hence we use this intermediate structure for discarding parts of it.
+
+ See also MBAlbums.
  */
 struct MBArtists: Decodable {
     let created: String
@@ -35,7 +37,6 @@ struct MBArtists: Decodable {
         let aliases: [MBAlias]?
         let tags: [MBTag]?
 
-
         private enum CodingKeys: String, CodingKey {
             case id
             case type
@@ -51,7 +52,6 @@ struct MBArtists: Decodable {
             case life_span = "life-span"
             case aliases
             case tags
-
         }
 
         struct MBArea: Decodable {

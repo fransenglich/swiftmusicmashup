@@ -18,9 +18,11 @@ import Foundation
 struct MBAlbums: Decodable {
     let albums: [MBAlbum]
 
+    /*
     private enum CodingKeys: String, CodingKey {
         case albums = ""
     }
+     */
 }
 
 struct MBAlbum: Decodable {

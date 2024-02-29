@@ -113,7 +113,7 @@ struct Album: Codable {
 func extractAlbums(from: MBAlbums) -> [Album] {
     var retval: [Album] = [Album]()
 
-    //retval = from.artists.map({Album($0)})
+    retval = from.albums.map({Album(id: $0.id, title: $0.title)})
     return retval
 }
 
@@ -127,7 +127,9 @@ struct ContentView: View {
 
     func fetchAlbums(artist: MBID) -> [Album] {
 
-        let url: URL = URL(string: "      https://musicbrainz.org/ws/2/release?artist=\(artist)&status=official&type=album&limit=10&fmt=json")!
+
+        let str = "https://musicbrainz.org/ws/2/release?artist=\(artist)&status=official&type=album&limit=10&fmt=json"
+        let url = URL(string: str)!
 
         let request = buildURLRequest(url)
 
@@ -140,7 +142,7 @@ struct ContentView: View {
                     //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                     let serviceReturn = try jsonDecoder.decode(MBAlbums.self, from: data)
 
-                    let albums: [Album] = extractAlbums(from: serviceReturn)
+                    albums = extractAlbums(from: serviceReturn)
 
                  //   print (serviceReturn)
                  //   print ("Artists: \(artists)")
@@ -165,7 +167,7 @@ struct ContentView: View {
             }
         }
 
-
+        task.resume()
         return albums
     }
 
@@ -237,8 +239,6 @@ struct ContentView: View {
                 print(data)
 
                 do {
-                
-        
                     let serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data)
 
                     let artists: [Artist] = extractArtists(from: serviceReturn)
@@ -247,6 +247,7 @@ struct ContentView: View {
 
                     let albums: [Album] = fetchAlbums(artist: firstArtist.id)
 
+                    print(albums)
                  //   print (serviceReturn)
                  //   print ("Artists: \(artists)")
                 }
