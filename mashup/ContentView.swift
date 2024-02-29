@@ -115,7 +115,7 @@ func extractAlbums(from: MBAlbums) -> [Album] {
 
     print("Release count \(from.releases.count)")
     retval = from.releases.map({Album(id: $0.id, title: $0.title)})
-    print(retval)
+    print("Albums in extractAlbums() \(retval)")
     return retval
 }
 
