@@ -113,7 +113,9 @@ struct Album: Codable {
 func extractAlbums(from: MBAlbums) -> [Album] {
     var retval: [Album] = [Album]()
 
-    retval = from.albums.map({Album(id: $0.id, title: $0.title)})
+    print("Release count \(from.releases.count)")
+    retval = from.releases.map({Album(id: $0.id, title: $0.title)})
+    print(retval)
     return retval
 }
 
@@ -121,16 +123,20 @@ struct ContentView: View {
     @State private var searchText: String = ""
     @State private var loadedData: String = ""
 
+    /**
+
+     */
     func actionSearch() {
         loadData(artist: searchText)
     }
 
+    /**
+
+     */
     func fetchAlbums(artist: MBID) -> [Album] {
-
-
         let str = "https://musicbrainz.org/ws/2/release?artist=\(artist)&status=official&type=album&limit=10&fmt=json"
         let url = URL(string: str)!
-
+        print (url)
         let request = buildURLRequest(url)
 
         var albums: [Album] = [Album]()
@@ -138,10 +144,13 @@ struct ContentView: View {
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
                 do {
+                    let retval = String(decoding: data, as: UTF8.self)
+                    loadedData = retval
                     let jsonDecoder = JSONDecoder()
                     //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                     let serviceReturn = try jsonDecoder.decode(MBAlbums.self, from: data)
 
+                    print(serviceReturn)
                     albums = extractAlbums(from: serviceReturn)
 
                  //   print (serviceReturn)
@@ -168,6 +177,7 @@ struct ContentView: View {
         }
 
         task.resume()
+        print("FOO: \(albums)")
         return albums
     }
 
@@ -228,7 +238,7 @@ struct ContentView: View {
         //   https://musicbrainz.org/ws/2/artist/&fmt=json?query=artist:the%20beatles
 
 
-        var request = buildURLRequest(url);
+        let request = buildURLRequest(url);
 
         var retval = String()
 
@@ -245,9 +255,9 @@ struct ContentView: View {
 
                     let firstArtist = artists[0] // TODO error handling
 
-                    let albums: [Album] = fetchAlbums(artist: firstArtist.id)
+                    let albums = fetchAlbums(artist: firstArtist.id)
 
-                    print(albums)
+                    print("BAR: \(albums)")
                  //   print (serviceReturn)
                  //   print ("Artists: \(artists)")
                 }

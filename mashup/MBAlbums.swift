@@ -16,7 +16,7 @@ import Foundation
 
 
 struct MBAlbums: Decodable {
-    let albums: [MBAlbum]
+    let releases: [MBAlbum]
 
     /*
     private enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ struct MBAlbums: Decodable {
 }
 
 struct MBAlbum: Decodable {
-    let release_group: MBReleaseGroup
+    let release_group: MBReleaseGroup?
     let status_id: String?
     let quality: String?
     let title: String
@@ -39,7 +39,7 @@ struct MBAlbum: Decodable {
     let asin: String?
     let packaging_id: String?
     let text_representation: MBTextRepresentation
-    let release_events: MBReleaseEvents
+    let release_events: [MBReleaseEvent]
     let id: String
     let cover_art_archive: MBCoverArtArchive?
 
@@ -69,17 +69,21 @@ struct MBTextRepresentation: Decodable {
     let script: String?
 }
 
+/*
 struct MBReleaseEvents: Decodable {
     let events: [MBReleaseEvent]
 
+    /*
     private enum CodingKeys: String, CodingKey {
         case events = ""
     }
+     */
 }
+*/
 
 struct MBReleaseEvent: Decodable {
-    let area: MBArea?
     let date: String?
+    let area: MBArea?
 }
 
 struct MBCoverArtArchive: Decodable {
@@ -91,13 +95,23 @@ struct MBCoverArtArchive: Decodable {
 }
 
 struct MBArea: Decodable {
-    let sort_name: String
-    let type: String
-    let disambiguation: String
     let type_id: String?
     let iso: [String]
     let id: String
     let name: String
+    let sort_name: String
+    let type: String?
+    let disambiguation: String
+
+    private enum CodingKeys: String, CodingKey {
+        case type_id = "type-id"
+        case iso = "iso-3166-1-codes"
+        case id
+        case name
+        case sort_name = "sort-name"
+        case type
+        case disambiguation
+    }
 }
 
 struct MBReleaseGroup: Decodable {

@@ -29,6 +29,7 @@
 		AACA9D682B8FAEB90034BA49 /* MBArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA9D672B8FAEB90034BA49 /* MBArtists.swift */; };
 		AACE39002B8C943300DFBB06 /* artist.json in Resources */ = {isa = PBXBuildFile; fileRef = AACE38FF2B8C943300DFBB06 /* artist.json */; };
 		AACE39022B8CB7E500DFBB06 /* argentina.json in Resources */ = {isa = PBXBuildFile; fileRef = AACE39012B8CB7E500DFBB06 /* argentina.json */; };
+		AAEEE7E92B9113B900E796F4 /* releaseBeatles.json in Resources */ = {isa = PBXBuildFile; fileRef = AAEEE7E82B9113B900E796F4 /* releaseBeatles.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		AACA9D672B8FAEB90034BA49 /* MBArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBArtists.swift; sourceTree = "<group>"; };
 		AACE38FF2B8C943300DFBB06 /* artist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artist.json; sourceTree = "<group>"; };
 		AACE39012B8CB7E500DFBB06 /* argentina.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = argentina.json; sourceTree = "<group>"; };
+		AAEEE7E82B9113B900E796F4 /* releaseBeatles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = releaseBeatles.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				AA32C58A2B8F8B7500EA4C24 /* SearchField.swift */,
 				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
+				AAEEE7E82B9113B900E796F4 /* releaseBeatles.json */,
 				AA05D8A02B908A7C008D51AB /* releases2.json */,
 				AA37B0572B8FC62700D267A5 /* thebeatles.json */,
 				AA37B04F2B8FBABE00D267A5 /* releases.json */,
@@ -288,6 +291,7 @@
 				AA37B0562B8FC3E100D267A5 /* release.json in Resources */,
 				AACE39002B8C943300DFBB06 /* artist.json in Resources */,
 				AA480DC52B85F67300BE36A7 /* Assets.xcassets in Resources */,
+				AAEEE7E92B9113B900E796F4 /* releaseBeatles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
