@@ -136,7 +136,9 @@ struct ContentView: View {
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
                 do {
-                    let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data)
+                    let jsonDecoder = JSONDecoder()
+                    //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let serviceReturn = try jsonDecoder.decode(MBAlbums.self, from: data)
 
                     let albums: [Album] = extractAlbums(from: serviceReturn)
 

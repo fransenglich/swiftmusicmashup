@@ -68,7 +68,7 @@ struct MBTextRepresentation: Decodable {
 }
 
 struct MBReleaseEvents: Decodable {
-    let events: [MBReleaseEVent]
+    let events: [MBReleaseEvent]
 
     private enum CodingKeys: String, CodingKey {
         case events = ""
@@ -80,6 +80,14 @@ struct MBReleaseEvent: Decodable {
     let date: String?
 }
 
+struct MBCoverArtArchive: Decodable {
+    let darkened: Bool
+    let count: Int
+    let artwork: Bool
+    let back: Bool
+    let front: Bool
+}
+
 struct MBArea: Decodable {
     let sort_name: String
     let type: String
@@ -88,8 +96,8 @@ struct MBArea: Decodable {
     let iso: [String]
     let id: String
     let name: String
-    }
 }
+
 struct MBReleaseGroup: Decodable {
     let secondary_types: [String]
     let title: String
