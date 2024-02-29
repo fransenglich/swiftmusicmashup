@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA05D8A12B908A7C008D51AB /* releases2.json in Resources */ = {isa = PBXBuildFile; fileRef = AA05D8A02B908A7C008D51AB /* releases2.json */; };
 		AA0ADF512B862DE500DD1845 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADF502B862DE500DD1845 /* SearchButton.swift */; };
 		AA0FC72D2B874A7200848A13 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA0FC72C2B874A7100848A13 /* README.md */; };
 		AA0FC72F2B874B2600848A13 /* ArtistName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC72E2B874B2600848A13 /* ArtistName.swift */; };
 		AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */; };
 		AA32C58B2B8F8B7500EA4C24 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32C58A2B8F8B7500EA4C24 /* SearchField.swift */; };
 		AA37B0502B8FBABF00D267A5 /* releases.json in Resources */ = {isa = PBXBuildFile; fileRef = AA37B04F2B8FBABE00D267A5 /* releases.json */; };
-		AA37B0522B8FBFD000D267A5 /* MBReleases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37B0512B8FBFD000D267A5 /* MBReleases.swift */; };
+		AA37B0522B8FBFD000D267A5 /* MBAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */; };
 		AA37B0542B8FC26500D267A5 /* release-group.json in Resources */ = {isa = PBXBuildFile; fileRef = AA37B0532B8FC26500D267A5 /* release-group.json */; };
 		AA37B0562B8FC3E100D267A5 /* release.json in Resources */ = {isa = PBXBuildFile; fileRef = AA37B0552B8FC3E000D267A5 /* release.json */; };
 		AA37B0582B8FC62700D267A5 /* thebeatles.json in Resources */ = {isa = PBXBuildFile; fileRef = AA37B0572B8FC62700D267A5 /* thebeatles.json */; };
@@ -48,13 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA05D8A02B908A7C008D51AB /* releases2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = releases2.json; sourceTree = "<group>"; };
 		AA0ADF502B862DE500DD1845 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		AA0FC72C2B874A7100848A13 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; fileEncoding = 4; path = README.md; sourceTree = SOURCE_ROOT; };
 		AA0FC72E2B874B2600848A13 /* ArtistName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistName.swift; sourceTree = "<group>"; };
 		AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDescription.swift; sourceTree = "<group>"; };
 		AA32C58A2B8F8B7500EA4C24 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		AA37B04F2B8FBABE00D267A5 /* releases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = releases.json; sourceTree = "<group>"; };
-		AA37B0512B8FBFD000D267A5 /* MBReleases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBReleases.swift; sourceTree = "<group>"; };
+		AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBAlbums.swift; sourceTree = "<group>"; };
 		AA37B0532B8FC26500D267A5 /* release-group.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "release-group.json"; sourceTree = "<group>"; };
 		AA37B0552B8FC3E000D267A5 /* release.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = release.json; sourceTree = "<group>"; };
 		AA37B0572B8FC62700D267A5 /* thebeatles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = thebeatles.json; sourceTree = "<group>"; };
@@ -133,11 +135,12 @@
 				AA32C58A2B8F8B7500EA4C24 /* SearchField.swift */,
 				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
+				AA05D8A02B908A7C008D51AB /* releases2.json */,
 				AA37B0572B8FC62700D267A5 /* thebeatles.json */,
 				AA37B04F2B8FBABE00D267A5 /* releases.json */,
 				AA37B0532B8FC26500D267A5 /* release-group.json */,
 				AA37B0552B8FC3E000D267A5 /* release.json */,
-				AA37B0512B8FBFD000D267A5 /* MBReleases.swift */,
+				AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */,
 				AACA9D672B8FAEB90034BA49 /* MBArtists.swift */,
 				AA480DC42B85F67300BE36A7 /* Assets.xcassets */,
 				AA480DC62B85F67300BE36A7 /* mashup.entitlements */,
@@ -275,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA05D8A12B908A7C008D51AB /* releases2.json in Resources */,
 				AA0FC72D2B874A7200848A13 /* README.md in Resources */,
 				AACE39022B8CB7E500DFBB06 /* argentina.json in Resources */,
 				AA37B0582B8FC62700D267A5 /* thebeatles.json in Resources */,
@@ -309,7 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */,
-				AA37B0522B8FBFD000D267A5 /* MBReleases.swift in Sources */,
+				AA37B0522B8FBFD000D267A5 /* MBAlbums.swift in Sources */,
 				AA49FD3E2B87AB5900B35F12 /* MusicBrainz.swift in Sources */,
 				AACA9D682B8FAEB90034BA49 /* MBArtists.swift in Sources */,
 				AA480DC32B85F66F00BE36A7 /* ContentView.swift in Sources */,

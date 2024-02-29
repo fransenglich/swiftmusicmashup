@@ -9,6 +9,8 @@ import SwiftUI
 
 // https://medium.com/@mdyamin/swiftui-mastering-webview-5790e686833e
 
+typealias MBID = String
+
 struct HTTPDataView: View {
     @Binding var data: String
 
@@ -22,9 +24,11 @@ A representation of a Music Brainz artist.
 */
 struct Artist : Codable {
     /**
-        Music Brainz' internal ID for artists.
+        Music Brainz' internal ID, the MBID.
+
+        See: https://musicbrainz.org/doc/MusicBrainz_Identifier
      */
-    let id: String
+    let id: MBID
 
     /**
         The name, for instance "The Beatles", without quotes.
@@ -36,7 +40,7 @@ struct Artist : Codable {
      */
     let area: String
 
-    init(id: String, name: String, area: String) {
+    init(id: MBID, name: String, area: String) {
         self.id = id
         self.name = name
         self.area = area
@@ -94,6 +98,25 @@ func replaceWS(_ input: String) -> String {
 }
 */
 
+
+struct Album: Codable {
+    let id: MBID
+    let title: String
+
+    init(id: MBID, title: String) {
+        self.id = id
+        self.title = title
+    }
+
+}
+
+func extractAlbums(from: MBAlbums) -> [Album] {
+    var retval: [Album] = [Album]()
+
+    //retval = from.artists.map({Album($0)})
+    return retval
+}
+
 struct ContentView: View {
     @State private var searchText: String = ""
     @State private var loadedData: String = ""
@@ -102,30 +125,49 @@ struct ContentView: View {
         loadData(artist: searchText)
     }
 
-    func loadData(artist: String) {
-        /*
-        let url = URL(string: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json")!
-         */
-        let encoded = artist.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+    func fetchAlbums(artist: MBID) -> [Album] {
 
-        print(encoded)
+        let url: URL = URL(string: "      https://musicbrainz.org/ws/2/release?artist=\(artist)&status=official&type=album&limit=10&fmt=json")!
 
-        let url = URL(string:
-                        "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
+        let request = buildURLRequest(url)
 
-        /*
+        var albums: [Album] = [Album]()
 
-    "https://musicbrainz.org/ws/2/release/?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&fmt=json"
+        let task = URLSession.shared.dataTask(with: request) {data, response, error in
+            if let data = data {
+                do {
+                    let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data)
 
-         */
+                    let albums: [Album] = extractAlbums(from: serviceReturn)
 
-// Timer: https://stackoverflow.com/questions/58363563/swiftui-get-notified-when-binding-value-changes
-        
-// FAILS: "https://musicbrainz.org/ws/2/artist/?fmt=json?query=artist:the%20beatles"
-// WORKS: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json"
+                 //   print (serviceReturn)
+                 //   print ("Artists: \(artists)")
+                }
+                catch DecodingError.dataCorrupted {
+                    print("JSON corrupt")
+                }
+                catch {
+                    print("JSON album decoding error: \(error)")
+                }
 
-        //   https://musicbrainz.org/ws/2/artist/&fmt=json?query=artist:the%20beatles
 
+                /*
+                if let artists = try? JSONDecoder().decode([Artist].self, from: data) {
+                    print(artists)
+                } else {
+                    print("Invalid response")
+                }
+                 */
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+
+
+        return albums
+    }
+
+    func buildURLRequest(_ url: URL) -> URLRequest {
         var request = URLRequest(url: url)
 
         request.setValue(
@@ -143,6 +185,47 @@ struct ContentView: View {
             forHTTPHeaderField: "User-Agent"
         )
 
+        return request
+    }
+
+    func loadData(artist: String) {
+        // The Beatles: b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d
+
+//    https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json
+        /*
+        let url = URL(string: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json")!
+         */
+        let encoded = artist.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+
+        print(encoded)
+
+        let url = URL(string:
+                        "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
+
+        /*
+     Works:
+    "https://musicbrainz.org/ws/2/release/?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&fmt=json"
+
+         https://musicbrainz.org/ws/2/release?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&status=official&type=album&limit=10&fmt=json
+
+
+   https://musicbrainz.org/ws/2/release?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&inc=release-groups&status=official&type=album&limit=10&fmt=json
+
+
+         https://musicbrainz.org/ws/2/release?artist=b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d&status=official&type=album&limit=10&fmt=json
+
+         */
+
+// Timer: https://stackoverflow.com/questions/58363563/swiftui-get-notified-when-binding-value-changes
+        
+// FAILS: "https://musicbrainz.org/ws/2/artist/?fmt=json?query=artist:the%20beatles"
+// WORKS: "https://musicbrainz.org/ws/2/artist/?query=artist:the%20beatles&fmt=json"
+
+        //   https://musicbrainz.org/ws/2/artist/&fmt=json?query=artist:the%20beatles
+
+
+        var request = buildURLRequest(url);
+
         var retval = String()
 
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
@@ -151,45 +234,16 @@ struct ContentView: View {
                 loadedData = retval
                 print(data)
 
-                /*
-                if let books = try? JSONDecoder().decode([Book].self, from: data) {
-                    print(books)
-                } else {
-                    print("Invalid Response")
-                }
-                 */
-                var serviceReturn: MBArtists
-
                 do {
-                    /*
-                    let debugString = """
-                    {"created":"2024-02-23T14:52:48.123Z",
-                    "count":110478,
-                    "offset":0,
-                        "artists":
-                        [{"id":"b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
-                            "type":"Group",
-                            "type-id":"e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                            "score":100,
-                            "name":"The Beatles",
-                            "sort-name":"Beatles The",
-
-                    "area":
-                    {"id":"9d5dd675-3cf4-4296-9e39-67865ebee758"
-                     , "type":"Subdivision"
-                      , "type-id":"fd3d44c5-80a1-3842-9745-2c4972d35afa"
-                        ,"name":"England"
-                        ,"sort-name":"England"
-                        ,"life-span":{"ended":null}
-                    }
-                    ]
-                    }
-                    """
-*/
-                    //let debugData = Data(debugString.utf8)
-                    serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data)
+                
+        
+                    let serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data)
 
                     let artists: [Artist] = extractArtists(from: serviceReturn)
+
+                    let firstArtist = artists[0] // TODO error handling
+
+                    let albums: [Album] = fetchAlbums(artist: firstArtist.id)
 
                  //   print (serviceReturn)
                  //   print ("Artists: \(artists)")

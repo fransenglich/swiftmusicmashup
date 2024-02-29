@@ -65,7 +65,7 @@ struct MBArtists: Decodable {
             private enum CodingKeys: String, CodingKey {
                 case id
                 case type
-                case type_id = "string"
+                case type_id = "type-id"
                 case name
                 case sort_name = "sort-name"
                 case life_span = "life-span"
