@@ -13,16 +13,9 @@ import Foundation
 
  We don't need all data, hence we use this intermediate structure for discarding parts of it.
  */
-
-
 struct MBAlbums: Decodable {
     let releases: [MBAlbum]
 
-    /*
-    private enum CodingKeys: String, CodingKey {
-        case albums = ""
-    }
-     */
 }
 
 struct MBAlbum: Decodable {
@@ -60,7 +53,6 @@ struct MBAlbum: Decodable {
         case release_events = "release-events"
         case id
         case cover_art_archive = "cover-art-archive"
-
     }
 }
 
@@ -68,18 +60,6 @@ struct MBTextRepresentation: Decodable {
     let language: String?
     let script: String?
 }
-
-/*
-struct MBReleaseEvents: Decodable {
-    let events: [MBReleaseEvent]
-
-    /*
-    private enum CodingKeys: String, CodingKey {
-        case events = ""
-    }
-     */
-}
-*/
 
 struct MBReleaseEvent: Decodable {
     let date: String?
@@ -134,5 +114,4 @@ struct MBReleaseGroup: Decodable {
         case secondary_type_ids = "secondary-type-ids"
         case primary_type_id = "primary-type-id"
     }
-
 }
