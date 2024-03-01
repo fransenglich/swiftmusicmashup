@@ -9,6 +9,13 @@ import SwiftUI
 
 // https://medium.com/@mdyamin/swiftui-mastering-webview-5790e686833e
 
+/**
+ Music Brainz' internal ID, the MBID, for its various entitities.
+
+ We use this type alias as natural documentation. It also has the advantage of making refacforing/extension easier.
+
+See: https://musicbrainz.org/doc/MusicBrainz_Identifier
+ */
 typealias MBID = String
 
 struct HTTPDataView: View {
@@ -23,11 +30,7 @@ struct HTTPDataView: View {
 A representation of a Music Brainz artist.
 */
 struct Artist : Codable {
-    /**
-        Music Brainz' internal ID, the MBID.
 
-        See: https://musicbrainz.org/doc/MusicBrainz_Identifier
-     */
     let id: MBID
 
     /**
@@ -44,6 +47,12 @@ struct Artist : Codable {
         self.id = id
         self.name = name
         self.area = area
+    }
+
+    init() {
+        self.id = ""
+        self.name = ""
+        self.area = ""
     }
 
     init(_ from: MBArtists.MBArtist) {
@@ -99,7 +108,7 @@ func replaceWS(_ input: String) -> String {
 */
 
 
-struct Album: Codable {
+struct Album: Codable, Hashable {
     let id: MBID
     let title: String
 
@@ -107,7 +116,6 @@ struct Album: Codable {
         self.id = id
         self.title = title
     }
-
 }
 
 func extractAlbums(from: MBAlbums) -> [Album] {
@@ -123,13 +131,16 @@ struct ContentView: View {
     @State private var searchText: String = ""
     @State private var loadedData: String = ""
 
-    /**
+    @Environment (ModelData.self) private var modelData
 
-     */
+
     func actionSearch() {
         loadData(artist: searchText)
     }
 
+    func displayAlbums(_ albums: [Album]) {
+
+    }
     /**
 
      */
@@ -151,8 +162,8 @@ struct ContentView: View {
                     let serviceReturn = try jsonDecoder.decode(MBAlbums.self, from: data)
 
                     print(serviceReturn)
-                    albums = extractAlbums(from: serviceReturn)
-
+                    modelData.albums = extractAlbums(from: serviceReturn)
+                    displayAlbums(albums)
                  //   print (serviceReturn)
                  //   print ("Artists: \(artists)")
                 }
@@ -289,13 +300,22 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-           // bindingSearchText = searchText
+            HStack {
+                SearchField(binding: $searchText)
+              //
+               // HTTPDataView(data: $loadedData)
+                Button("Search", action: actionSearch)
+              //  Button("Load", action: loadData)
+            }
 
-
+         //   ArtistName(bindingSee)
+            AlbumList()
+/*
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
 
+ */
                /* .searchable(text: $searchText,
                             prompt: "Search for artist")
 
@@ -307,18 +327,14 @@ struct ContentView: View {
             // WKWebView
             //SearchButton()
 
-            HStack {
-                SearchField(binding: $searchText)
-              //  ArtistName(bindingSee)
-                HTTPDataView(data: $loadedData)
-                Button("Search", action: actionSearch)
-              //  Button("Load", action: loadData)
-            }
+
         }
         .padding()
     }
 }
 
+/*
 #Preview {
     ContentView()
 }
+*/

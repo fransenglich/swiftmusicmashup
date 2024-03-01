@@ -20,6 +20,7 @@ Output/Interface:
 Possible improvements
 There are no limits to the amounts of features and polishing that is possible, but here are some more obvious and crucial ones:
 
+* Better search interface. Update as you type, or trigger on enter key
 * Security concerns
 * Robustness for Music Brainz' API. MB's MMD format needs to be taken into account
 * Error handling/robustness of responses from the APIs
