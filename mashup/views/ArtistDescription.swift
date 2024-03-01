@@ -8,7 +8,6 @@
 import SwiftUI
 import WebKit
 
-
 class ArtistDescription: NSViewController, WKUIDelegate {
 
     var webView: WKWebView!
