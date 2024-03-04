@@ -27,6 +27,8 @@ There are no limits to the amounts of features and polishing that is possible, b
 * Currently hardcoded on English Wikipedia. Extend for different languages
 * Generally error handling, many errors currently leads to segfaults
 * Populate the search results incrementally
+* HIG/Usability/Accessiblity
+* l10n
 
 Challenges/steps that took time were:
 * First time with Xcode, Swift, SwiftUI and so forth
