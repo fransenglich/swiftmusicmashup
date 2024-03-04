@@ -117,8 +117,8 @@
 		AA480DBF2B85F66F00BE36A7 /* mashup */ = {
 			isa = PBXGroup;
 			children = (
-				AA6598A82B9207FE00C39D5B /* views */,
 				AA6598A72B9207E100C39D5B /* data */,
+				AA6598A82B9207FE00C39D5B /* views */,
 				AA6598A92B9208B900C39D5B /* Global.swift */,
 				AA480DC02B85F66F00BE36A7 /* mashupApp.swift */,
 				AA0FC72C2B874A7100848A13 /* README.md */,
@@ -161,6 +161,7 @@
 				AACA9D672B8FAEB90034BA49 /* MBArtists.swift */,
 				AA6598A32B9204B100C39D5B /* Album.swift */,
 				AA6598A52B92062700C39D5B /* Artist.swift */,
+				AA65989D2B91EE1400C39D5B /* ModelData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -171,7 +172,6 @@
 				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
 				AA0FC72E2B874B2600848A13 /* ArtistName.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
-				AA65989D2B91EE1400C39D5B /* ModelData.swift */,
 				AA65989F2B91EEFD00C39D5B /* AlbumList.swift */,
 				AA32C58A2B8F8B7500EA4C24 /* SearchField.swift */,
 			);

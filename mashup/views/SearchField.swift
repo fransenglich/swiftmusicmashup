@@ -11,7 +11,7 @@ struct SearchField: View {
     @Binding var binding: String
 
     var body: some View {
-        TextField("Enter text", text: $binding)
+        TextField("Enter artist", text: $binding)
     }
 }
 

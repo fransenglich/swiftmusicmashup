@@ -11,25 +11,13 @@ struct AlbumList: View {
     @Environment (ModelData.self) private var modelData
 
     var body: some View {
-
          List {
-             ForEach (modelData.albums, id: \.self)
-             { album in
-         //  Label(text: album.title)
+             ForEach (modelData.albums, id: \.self) { album in
                  Text(album.title)
-         /*
-          NavigationLink {
-          LandmarkDetail(landmark: landmark)
-          } label: {
-          LandmarkRow(landmark: landmark)
-          }
-          */
+             }
          }
-         }
-
-         }
-
     }
+}
 
     /*
 #Preview {
