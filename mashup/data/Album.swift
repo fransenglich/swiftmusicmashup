@@ -11,9 +11,9 @@ import AppKit
 /**
  A simple container representing an album.
  */
-struct Album: Codable, Identifiable {
+struct Album: Identifiable {
     /**
-        Unique identifier given by Music Brainz.
+    Unique identifier given by Music Brainz.
      */
     let id: MBID
 
@@ -23,19 +23,43 @@ struct Album: Codable, Identifiable {
     let title: String
 
     /**
-     The image data for the album front cover.
+    The URL to the album front cover image.
      */
-  //  let frontCover: NSImage
+    var imageURL: URL {
+        URL(string: "http://coverartarchive.org/release/" + id + "/front.jpg")!
+    }
 
+    func constructImageURL(id: MBID) -> URL {
+        URL(string: "http://coverartarchive.org/release/" + id + "/front.jpg")!
+    }
     /**
-        The URL to the album front cover image.
+
      */
-    let imageURL: URL
+    var albumCoverImage: NSImage?
 
     init(id: MBID, title: String) {
         self.id = id
         self.title = title
-        self.imageURL = URL(string: "http://coverartarchive.org/release/" + id + "/front.jpg")!
+
+        let request = buildURLRequest(constructImageURL(id: id))
+
+        let task = URLSession.shared.dataTask(with: request) {data, response, error in
+            if let data = data {
+                do {
+                    self.albumCoverImage = NSImage(contentsOf: imageURL)
+                }
+                catch DecodingError.dataCorrupted {
+                    print("JSON corrupt")
+                }
+                catch {
+                    print("JSON album decoding error: \(error)")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+
+        task.resume()
     }
 
     func loadFrontCover() {
@@ -80,6 +104,8 @@ struct Album: Codable, Identifiable {
             //retval.append(Album(id: album.id, album.title, cover))
         }
         */
+
+        
         return from.releases.map({Album(id: $0.id, title: $0.title)})
     }
 }

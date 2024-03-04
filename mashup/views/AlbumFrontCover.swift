@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct AlbumFrontCover: View {
     let imageData: NSImage?
 

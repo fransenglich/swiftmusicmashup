@@ -10,7 +10,7 @@ import Foundation
 /**
 A representation of a Music Brainz artist.
 */
-struct Artist : Codable {
+struct Artist {
 
     let id: MBID
 
@@ -54,11 +54,9 @@ struct Artist : Codable {
         } else {
             self.area = String()
         }
-
     }
 
     static func extract(from: MBArtists) -> [Artist] {
         return from.artists.map({Artist($0)})
     }
-    
 }

@@ -15,3 +15,27 @@ import Foundation
 See: https://musicbrainz.org/doc/MusicBrainz_Identifier
  */
 typealias MBID = String
+
+/**
+    Helper function. Sets up and configures an URLRequest for the url.
+ */
+func buildURLRequest(_ url: URL) -> URLRequest {
+    var request = URLRequest(url: url)
+
+    request.setValue(
+        "application/json",
+        forHTTPHeaderField: "Content-Type"
+    )
+
+    request.setValue(
+        "application/json",
+        forHTTPHeaderField: "Accept"
+    )
+
+    request.setValue(
+        "Custom mashup (fenglich@fastmail.fm)",
+        forHTTPHeaderField: "User-Agent"
+    )
+
+    return request
+}

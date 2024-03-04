@@ -12,16 +12,15 @@ struct AlbumList: View {
 
     var body: some View {
          List {
-             ForEach (modelData.albums, id: \.self) { album in
-                
-                print(album.imageURL)
-
-                let data = NSImage(contentsOf: album.imageURL)
+             ForEach (modelData.albums) { album in
+                //let data = NSImage(contentsOf: album.imageURL)
 
                  HStack {
-                     AlbumFrontCover(imageData: data)
+                     //AlbumFrontCover(imageData: data)
+                     AlbumFrontCover(imageData: album.albumCoverImage)
                      Text(album.title)
                  }
+
              }
          }
     }

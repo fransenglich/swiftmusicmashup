@@ -25,7 +25,9 @@ struct ContentView: View {
 
      */
     func loadAlbums(artist: MBID) {
-        let str = "https://musicbrainz.org/ws/2/release?artist=\(artist)&status=official&type=album&limit=10&fmt=json"
+        let str = "https://musicbrainz.org/ws/2/release?artist="
+                + artist
+                + "&status=official&type=album&limit=10&fmt=json"
         let url = URL(string: str)!
         print (url)
         let request = buildURLRequest(url)
@@ -50,30 +52,6 @@ struct ContentView: View {
         }
 
         task.resume()
-    }
-
-    /**
-        Helper function. Sets up and configures an URLRequest for the url.
-     */
-    func buildURLRequest(_ url: URL) -> URLRequest {
-        var request = URLRequest(url: url)
-
-        request.setValue(
-            "application/json",
-            forHTTPHeaderField: "Content-Type"
-        )
-
-        request.setValue(
-            "application/json",
-            forHTTPHeaderField: "Accept"
-        )
-
-        request.setValue(
-            "Custom mashup (fenglich@fastmail.fm)",
-            forHTTPHeaderField: "User-Agent"
-        )
-
-        return request
     }
 
     /**
