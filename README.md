@@ -29,7 +29,7 @@ There are no limits to the amounts of features and polishing that is possible, b
 * Populate the search results incrementally
 * HIG/Usability/Accessiblity
 * l10n
-
+* Load thumbnails for album cover
 Challenges/steps that took time were:
 * First time with Xcode, Swift, SwiftUI and so forth
 * Understanding the services' APIs
