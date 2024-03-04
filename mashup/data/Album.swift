@@ -11,7 +11,7 @@ import AppKit
 /**
  A simple container representing an album.
  */
-struct Album: Codable, Hashable, Identifiable {
+struct Album: Codable, Identifiable {
     /**
         Unique identifier given by Music Brainz.
      */
