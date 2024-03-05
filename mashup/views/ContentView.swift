@@ -1,13 +1,10 @@
-//
-//  ContentView.swift
-//  mashup
-//
-//  Created by Frans Englich on 2024-02-21.
-//
 
 import SwiftUI
 
 
+/**
+ Our main view.
+ */
 struct ContentView: View {
     @State private var searchText: String = ""
 
@@ -22,7 +19,12 @@ struct ContentView: View {
     }
 
     /**
+        Loads the albums for an artist.
 
+     The modelData is updated with the retrieved data.
+
+     - Parameters:
+     - artist: The MBID for the artist
      */
     func loadAlbums(artist: MBID) {
         let str = "https://musicbrainz.org/ws/2/release?artist="

@@ -1,10 +1,3 @@
-//
-//  Artist.swift
-//  mashup
-//
-//  Created by Frans Englich on 2024-03-01.
-//
-
 import Foundation
 
 /**
@@ -39,14 +32,6 @@ struct Artist {
     init(_ from: MBArtists.MBArtist) {
         id = from.id
         name = from.name
-
-        /*
-        if let name = from.name {
-            self.name = name
-        } else {
-            self.name = ""
-        }
-         */
 
         if let area = from.area,
            let name = area.name {
