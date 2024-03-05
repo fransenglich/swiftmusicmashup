@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA0FC72D2B874A7200848A13 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA0FC72C2B874A7100848A13 /* README.md */; };
-		AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */; };
 		AA1163BA2B97470A00F9A12C /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1163B92B97470A00F9A12C /* SearchField.swift */; };
 		AA37B0522B8FBFD000D267A5 /* MBAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */; };
 		AA480DC12B85F66F00BE36A7 /* mashupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA480DC02B85F66F00BE36A7 /* mashupApp.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		AA0FC72C2B874A7100848A13 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; fileEncoding = 4; path = README.md; sourceTree = SOURCE_ROOT; };
-		AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDescription.swift; sourceTree = "<group>"; };
 		AA1163B92B97470A00F9A12C /* SearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBAlbums.swift; sourceTree = "<group>"; };
 		AA480DBD2B85F66F00BE36A7 /* mashup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mashup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +165,6 @@
 		AA6598A82B9207FE00C39D5B /* views */ = {
 			isa = PBXGroup;
 			children = (
-				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
 				AA1163B92B97470A00F9A12C /* SearchField.swift */,
 				AA65989F2B91EEFD00C39D5B /* AlbumList.swift */,
@@ -307,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6598A02B91EEFD00C39D5B /* AlbumList.swift in Sources */,
-				AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */,
 				AA37B0522B8FBFD000D267A5 /* MBAlbums.swift in Sources */,
 				AACA9D682B8FAEB90034BA49 /* MBArtists.swift in Sources */,
 				AA480DC32B85F66F00BE36A7 /* ContentView.swift in Sources */,
