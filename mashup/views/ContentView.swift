@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-
 /**
  Our main view.
  */
@@ -9,15 +8,6 @@ struct ContentView: View {
     @State private var searchText: String = ""
 
     @Environment (ModelData.self) private var modelData
-
-
-    /**
-     Triggered by the search button.
-     */ // TODO do with anon func
-    func actionSearch() {
-        modelData.firstSearch = false
-        loadFor(artistName: searchText)
-    }
 
     /**
         Loads the albums for an artist.
@@ -32,7 +22,7 @@ struct ContentView: View {
                 + artist
                 + "&status=official&type=album&limit=100&fmt=json"
         let url = URL(string: str)!
-        print (url)
+
         let request = buildURLRequest(url)
 
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
@@ -40,7 +30,6 @@ struct ContentView: View {
                 do {
                     let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data)
 
-                    print(serviceReturn)
                     modelData.albums = Album.extract(from: serviceReturn)
                 }
                 catch DecodingError.dataCorrupted {
@@ -71,8 +60,6 @@ struct ContentView: View {
         // The Beatles: b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d
 
         let encoded = artistName.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
-
-        print(encoded)
 
         let url = URL(string:
                         "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
@@ -114,7 +101,10 @@ struct ContentView: View {
         VStack {
             HStack {
                 SearchField(binding: $searchText)
-                Button("Search", action: actionSearch)
+                Button("Search", action: {
+                    modelData.firstSearch = false
+                    loadFor(artistName: searchText)
+                })
             }
 
             if modelData.artist == nil {
