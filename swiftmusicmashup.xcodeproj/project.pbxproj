@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA0FC72D2B874A7200848A13 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA0FC72C2B874A7100848A13 /* README.md */; };
-		AA0FC72F2B874B2600848A13 /* ArtistName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC72E2B874B2600848A13 /* ArtistName.swift */; };
 		AA0FC7312B874B3F00848A13 /* ArtistDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */; };
 		AA1163BA2B97470A00F9A12C /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1163B92B97470A00F9A12C /* SearchField.swift */; };
 		AA37B0522B8FBFD000D267A5 /* MBAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		AA0FC72C2B874A7100848A13 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; fileEncoding = 4; path = README.md; sourceTree = SOURCE_ROOT; };
-		AA0FC72E2B874B2600848A13 /* ArtistName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistName.swift; sourceTree = "<group>"; };
 		AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDescription.swift; sourceTree = "<group>"; };
 		AA1163B92B97470A00F9A12C /* SearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		AA37B0512B8FBFD000D267A5 /* MBAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBAlbums.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				AA0FC7302B874B3F00848A13 /* ArtistDescription.swift */,
-				AA0FC72E2B874B2600848A13 /* ArtistName.swift */,
 				AA480DC22B85F66F00BE36A7 /* ContentView.swift */,
 				AA1163B92B97470A00F9A12C /* SearchField.swift */,
 				AA65989F2B91EEFD00C39D5B /* AlbumList.swift */,
@@ -319,7 +316,6 @@
 				AA480DC12B85F66F00BE36A7 /* mashupApp.swift in Sources */,
 				AA6598AA2B9208BA00C39D5B /* Global.swift in Sources */,
 				AA65989E2B91EE1400C39D5B /* ModelData.swift in Sources */,
-				AA0FC72F2B874B2600848A13 /* ArtistName.swift in Sources */,
 				AA6598A42B9204B100C39D5B /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
