@@ -5,7 +5,7 @@ This is a small macOS/iOS app that enables the user to search for a music artist
 
 In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from Music Brainz and typically multiple queries to Cover Art Archive, per artist search.
 
-Pulling from Wikipedia was omitted due to also writing a smaller part of Java, and hence not write two cases.
+Pulling from Wikipedia was omitted due to also writing a smaller part of Java, and hence to not write two cases.
 
 # Challenges
 
@@ -40,7 +40,20 @@ A general security mindset, and this paragraph should be considered a bit cringe
 
 In the case of this being a commercial application, a license/API key needs to be purchased from MusicBrainz, or enter somekind of agreement. In short, a legal review needs to be done.
 
+## ESG
+Might be relevant to look at energy consumption, depending on customer's requests.
+
 ## QA and QC
-* Robustness for Music Brainz' API. MB's MMD format needs to be studied
-* Error handling/robustness of responses from the APIs
-* Generally error handling, many errors currently leads to segfaults
+
+I have been on a test task force at W3C and am ISTQB certified, but without typing a book:
+
+* Robustness for Music Brainz' format. MB's MMD format needs to be studied
+* Robustness for different HTTP return codes/and errors
+* This app is simple, but a plethora of different user input/searches needs to be tested. For instance:
+    - No input
+    - Only spaces
+    - Tabs
+    - Non-ASCII characters, and see if they survive all encodings
+    - Query that has no result
+    - Different kinds of queries
+* Relevant platforms
