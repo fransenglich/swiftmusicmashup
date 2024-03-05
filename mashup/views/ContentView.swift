@@ -85,11 +85,14 @@ struct ContentView: View {
 
                     let artists: [Artist] = Artist.extract(from: serviceReturn)
 
-                    let firstArtist = artists[0] // TODO error handling
-
-                    // Second step: load the albums
-                    loadAlbums(artist: firstArtist.id)
-
+                    if artists.isEmpty {
+                        modelData.artist = nil
+                    }
+                    else {
+                        // Second step: load the albums
+                        modelData.artist = artists[0]
+                        loadAlbums(artist: modelData.artist!.id)
+                    }
                 }
                 catch DecodingError.dataCorrupted {
                     print("JSON corrupt")
@@ -113,7 +116,13 @@ struct ContentView: View {
                 Button("Search", action: actionSearch)
             }
 
-            AlbumList()
+            if modelData.artist == nil {
+                Text("No artist found")
+                    .font(.system(size: 20))
+            }
+            else {
+                AlbumList()
+            }
         }
         .padding()
     }

@@ -15,5 +15,5 @@ class ModelData {
     /**
      The artist that was chosen from the query.
      */
-    var artist: Artist = Artist()
+    var artist: Artist?
 }
