@@ -1,7 +1,7 @@
 
 # Swift Music Mashup
 
-This is a small macOS/iOS app that enables the user to search for a music artist, and returns a list of albums, with their titles and front cover album art. Many of the technologies used, were new to me.
+This is a small macOS/iOS app that enables the user to search for a music artist, and returns a list of albums, with their titles and front cover album art. Many of the technologies used in the implementation, were new to me.
 
 In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from Music Brainz and typically multiple queries to Cover Art Archive, per artist search.
 
