@@ -1,38 +1,44 @@
 
-Den här uppgiften är en så kallad "mashup" dvs. man tar funktionalitet från
-några olika tjänster på nätet och "mashar ihop" dem till en tjänst. I det här
-fallet är det tjänsterna MusicBrainz, Wikipedia och Cover Art Archive.
-MusicBrainz innehåller information om en artist, och vilka album artisten
-släppt. Wikipedia innehåller en beskrivning över artisten (som alltså INTE
-finns i MusicBrainz) och Cover Art Archive innehåller bilder för de olika
-albumen (som inte heller finns på MusicBrainz eller Wikipedia för den delen).
+# Swift Music Mashup
 
-Du ska alltså integrera dessa tre tjänster och erbjuda en ny egen tjänst.
+This is a small macOS/iOS app that enables the user to search for a music artist, and returns a list of albums, with their titles and front cover album art.
 
+In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from Music Brainz and typically multiple queries to Cover Art Archive, per artist search.
 
-Specific to Swift is concurrency, asynchronicity and model/view 
+Pulling from Wikipedia was omitted due to also writing a smaller part of Java, and hence not write two cases.
 
-Input: artistnamn
+# Challenges
 
-Output/Interface:
-        Search på toppen
-    Namn, stylized
-    Ingress från Wikipedia
-    Lista av album, med namn och coverbild
+This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is a elegant little language that solves many problematic areas. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce.
 
-Possible improvements
-There are no limits to the amounts of features and polishing that is possible, but here are some more obvious and crucial ones:
+Specific to this case was challenges related to the need of asynchronous tasks (the network loading) and updating the UI. Not surprisingly, Swift has measures for balancing this.
 
-* Better search interface. Update as you type, or trigger on enter key
-* Security concerns
-* Robustness for Music Brainz' API. MB's MMD format needs to be taken into account
+The asynchronous network loading was done by passing a closure to URLSession. SwiftUI's way of doing dynamic interfaces is very high level. While they've found inspiration from Qt and model/view architectures, much magic and behind-the-scenes work is used for making it very simple. One expresses relationships between views (widgets/controls) and the data, and SwiftUI does the wiring. In the implementation the data is stored in ModelData, and the views in needed bring it in with @Environment. @States and @Bindings are also used for passing data.
+
+# Aids Used
+
+No questions were asked, such as on forums or to friends, for this case. Resources used were Xcode, expected documentation and articles.
+ 
+# Possible Improvements
+
+Considering this is only a case, much can be done.
+
+## UI
+
+* Conformance to relevant HIG (Human Interface Guidelines). In this case Apple's, and perhaps a company specific one
+* Localization, also called l10n
+* Accessiblity
+* Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
+
+## Security
+
+A general security mindset, and this paragraph should be considered a bit cringe. Code-wise, it could be considered that a query injection is possible through the search interface, and perhaps possible DOS attacks. In short, a security review needs to be done.
+
+## Legal/Business
+
+In the case of this being a commercial application, a license/API key needs to be purchased from MusicBrainz, or enter somekind of agreement. In short, a legal review needs to be done.
+
+## QA and QC
+* Robustness for Music Brainz' API. MB's MMD format needs to be studied
 * Error handling/robustness of responses from the APIs
-* Currently hardcoded on English Wikipedia. Extend for different languages
 * Generally error handling, many errors currently leads to segfaults
-* Populate the search results incrementally
-* HIG/Usability/Accessiblity
-* l10n
-* Load thumbnails for album cover
-Challenges/steps that took time were:
-* First time with Xcode, Swift, SwiftUI and so forth
-* Understanding the services' APIs
