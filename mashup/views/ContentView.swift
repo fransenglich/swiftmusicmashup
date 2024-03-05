@@ -13,9 +13,8 @@ struct ContentView: View {
     /**
             A helper function that runs the closure execute for the data as returned and converted for the URL.
 
-        - Parameters:
-     - url: The URL to be loaded. Must be valid
-     - execute: the closure to execute for the data
+     - Parameter url: The URL to be loaded. Must be valid
+     - Parameter execute: the closure to execute for the data
      */
     func loadData(url: String, execute: @escaping (Data?) throws -> Void) {
         var request = URLRequest(url: URL(string: url)!)
@@ -54,8 +53,7 @@ struct ContentView: View {
 
      The modelData is updated with the retrieved data.
 
-     - Parameters:
-     - artist: The MBID for the artist
+     - Parameter artist: The MBID for the artist
      */
     func loadAlbums(artist: MBID) {
         let str = "https://musicbrainz.org/ws/2/release?artist="
@@ -130,7 +128,6 @@ struct ContentView: View {
         .padding()
     }
 }
-
 
 #Preview {
     ContentView()
