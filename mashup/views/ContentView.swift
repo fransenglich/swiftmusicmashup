@@ -9,28 +9,29 @@ struct ContentView: View {
 
     @Environment (ModelData.self) private var modelData
 
-    /**
-        Loads the albums for an artist.
 
-     The modelData is updated with the retrieved data.
+    func loadData(url: String, execute: @escaping (Data?) throws -> Void) {
+        var request = URLRequest(url: URL(string: url)!)
 
-     - Parameters:
-     - artist: The MBID for the artist
-     */
-    func loadAlbums(artist: MBID) {
-        let str = "https://musicbrainz.org/ws/2/release?artist="
-                + artist
-                + "&status=official&type=album&limit=100&fmt=json"
-        let url = URL(string: str)!
+        request.setValue(
+            "application/json",
+            forHTTPHeaderField: "Content-Type"
+        )
 
-        let request = buildURLRequest(url)
+        request.setValue( // TODO
+            "application/json",
+            forHTTPHeaderField: "Accept"
+        )
+
+        request.setValue(
+            "Custom mashup (fenglich@fastmail.fm)",
+            forHTTPHeaderField: "User-Agent"
+        )
 
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
                 do {
-                    let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data)
-
-                    modelData.albums = Album.extract(from: serviceReturn)
+                    try execute(data)
                 }
                 catch DecodingError.dataCorrupted {
                     print("JSON corrupt")
@@ -44,6 +45,25 @@ struct ContentView: View {
         }
 
         task.resume()
+    }
+    /**
+        Loads the albums for an artist.
+
+     The modelData is updated with the retrieved data.
+
+     - Parameters:
+     - artist: The MBID for the artist
+     */
+    func loadAlbums(artist: MBID) {
+        let str = "https://musicbrainz.org/ws/2/release?artist="
+                + artist
+                + "&status=official&type=album&limit=100&fmt=json"
+        
+        loadData(url: str, execute: { (data: Data?) in
+                    let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data!)
+
+                    modelData.albums = Album.extract(from: serviceReturn)
+                })
     }
 
     /**
@@ -61,40 +81,24 @@ struct ContentView: View {
 
         let encoded = artistName.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
 
-        let url = URL(string:
-                        "https://musicbrainz.org/ws/2/artist/?query=artist:\(encoded)&fmt=json")!
+        let str = "https://musicbrainz.org/ws/2/artist/?query=artist:"
+                + encoded
+                + "&fmt=json"
 
-        let request = buildURLRequest(url);
+        loadData(url: str, execute: { (data: Data?) in
+            let serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data!)
 
-        let task = URLSession.shared.dataTask(with: request) {data, response, error in
-            if let data = data {
-                do {
-                    let serviceReturn = try JSONDecoder().decode(MBArtists.self, from: data)
+            let artists: [Artist] = Artist.extract(from: serviceReturn)
 
-                    let artists: [Artist] = Artist.extract(from: serviceReturn)
-
-                    if artists.isEmpty {
-                        modelData.artist = nil
-                    }
-                    else {
-                        // Second step: load the albums
-                        modelData.artist = artists[0]
-                        loadAlbums(artist: modelData.artist!.id)
-                    }
-                }
-                catch DecodingError.dataCorrupted {
-                    print("JSON corrupt")
-                }
-                catch {
-                    print("JSON decoding error: \(error)")
-                }
-
-            } else if let error = error {
-                print("HTTP Request Failed \(error)")
+            if artists.isEmpty {
+                modelData.artist = nil
             }
-        }
-
-        task.resume()
+            else {
+                // Second step: load the albums
+                modelData.artist = artists[0]
+                loadAlbums(artist: modelData.artist!.id)
+            }
+        })
     }
 
     var body: some View {
