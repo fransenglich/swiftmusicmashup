@@ -7,9 +7,14 @@ In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does 
 
 Pulling from Wikipedia was omitted due to also writing a smaller part of Java, and hence to not write two cases.
 
+# The Case
+The case was described as follows:
+
+You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art Archive. MusicBrainz contains information about an artist, and what album he/she has releaed. Wikipedia has  description over the artist (which isn't in MusicBrainz') and Cover Art Archive contains images for the various albums (which MusicBrainz and Wikipedia neither contains).
+
 # Challenges
 
-This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is a elegant little language that solves many problematic areas. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce.
+This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is an elegant little language that solves many problematic areas. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce.
 
 Specific to this case was challenges related to the need of asynchronous tasks (the network loading) and updating the UI. Not surprisingly, Swift has measures for balancing this.
 
