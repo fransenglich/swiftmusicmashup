@@ -2,6 +2,9 @@
 
 import SwiftUI
 
+/**
+ The search view at the top.
+ */
 struct SearchField: View {
     @Binding var binding: String
 

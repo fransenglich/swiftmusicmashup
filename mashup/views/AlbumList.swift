@@ -1,6 +1,9 @@
 
 import SwiftUI
 
+/**
+ A view that has the album cover on the left, and title on the right.
+ */
 struct AlbumList: View {
     @Environment (ModelData.self) private var modelData
 

@@ -10,17 +10,19 @@ struct ContentView: View {
     @Environment (ModelData.self) private var modelData
 
 
+    /**
+            A helper function that runs the closure execute for the data as returned and converted for the URL.
+
+        - Parameters:
+     - url: The URL to be loaded. Must be valid
+     - execute: the closure to execute for the data
+     */
     func loadData(url: String, execute: @escaping (Data?) throws -> Void) {
         var request = URLRequest(url: URL(string: url)!)
 
         request.setValue(
             "application/json",
             forHTTPHeaderField: "Content-Type"
-        )
-
-        request.setValue( // TODO
-            "application/json",
-            forHTTPHeaderField: "Accept"
         )
 
         request.setValue(
@@ -46,6 +48,7 @@ struct ContentView: View {
 
         task.resume()
     }
+    
     /**
         Loads the albums for an artist.
 
