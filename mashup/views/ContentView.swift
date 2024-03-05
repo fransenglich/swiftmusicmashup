@@ -119,12 +119,16 @@ struct ContentView: View {
 
             if modelData.artist == nil {
                 if !modelData.firstSearch {
-                    Text("No artist found")
+                    Text("No such artist found")
                 }
             }
             else {
+                Text(modelData.artist!.name)
+                    .font(.system(size: 20))
                 AlbumList()
+
             }
+            Spacer()
         }
         .padding()
     }
