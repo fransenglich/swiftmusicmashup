@@ -15,6 +15,7 @@ struct ContentView: View {
      Triggered by the search button.
      */ // TODO do with anon func
     func actionSearch() {
+        modelData.firstSearch = false
         loadFor(artistName: searchText)
     }
 
@@ -117,8 +118,9 @@ struct ContentView: View {
             }
 
             if modelData.artist == nil {
-                Text("No artist found")
-                    .font(.system(size: 20))
+                if !modelData.firstSearch {
+                    Text("No artist found")
+                }
             }
             else {
                 AlbumList()

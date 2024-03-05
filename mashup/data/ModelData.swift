@@ -16,4 +16,6 @@ class ModelData {
      The artist that was chosen from the query.
      */
     var artist: Artist?
+
+    var firstSearch: Bool = true
 }
