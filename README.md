@@ -9,6 +9,9 @@ albumen (som inte heller finns på MusicBrainz eller Wikipedia för den delen).
 
 Du ska alltså integrera dessa tre tjänster och erbjuda en ny egen tjänst.
 
+
+Specific to Swift is concurrency, asynchronicity and model/view 
+
 Input: artistnamn
 
 Output/Interface:

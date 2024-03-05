@@ -27,7 +27,7 @@ struct ContentView: View {
     func loadAlbums(artist: MBID) {
         let str = "https://musicbrainz.org/ws/2/release?artist="
                 + artist
-                + "&status=official&type=album&limit=10&fmt=json"
+                + "&status=official&type=album&limit=100&fmt=json"
         let url = URL(string: str)!
         print (url)
         let request = buildURLRequest(url)

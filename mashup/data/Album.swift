@@ -25,13 +25,29 @@ struct Album: Identifiable {
     /**
     The URL to the album front cover image.
      */
+
     var imageURL: URL {
-        URL(string: "http://coverartarchive.org/release/" + id + "/front.jpg")!
+       URL(string: "https://coverartarchive.org/release/"
+            + id
+            + "/front.jpg")!
+   /*  let u = URL(string: "https://coverartarchive.org/release/"
+         + id
+         + "-500.jpg")!
+        print(u)
+        return u*/
     }
 
+     /*
+
     func constructImageURL(id: MBID) -> URL {
-        URL(string: "http://coverartarchive.org/release/" + id + "/front.jpg")!
+      //  "http://coverartarchive.org/release/76df3287-6cda-33eb-8e9a-044b5e15ffdd/829521842-250.jpg"
+
+        URL(string: "https://coverartarchive.org/release/"
+            + id
+            + "-250.jpg")!
+        // + "/front.jpg")!
     }
+*/
     /**
 
      */
@@ -41,8 +57,11 @@ struct Album: Identifiable {
         self.id = id
         self.title = title
 
+        /*
         let request = buildURLRequest(constructImageURL(id: id))
 
+         */
+        /*
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
                 do {
@@ -57,9 +76,11 @@ struct Album: Identifiable {
             } else if let error = error {
                 print("HTTP Request Failed \(error)")
             }
+
         }
 
         task.resume()
+         */
     }
 
     func loadFrontCover() {
@@ -95,7 +116,7 @@ struct Album: Identifiable {
        /* var retval: [Album] = [Album]()
 
         ForEach(from.releases) { album in
-            let url: String = "http://coverartarchive.org/release/"
+            let url: String = "https://coverartarchive.org/release/"
                             + album.id
                             + "/front.jpg"
 
