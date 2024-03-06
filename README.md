@@ -1,7 +1,9 @@
 
 # Swift Music Mashup
 
-This is a small macOS/iOS app that enables the user to search for a music artist, and returns a list of albums, with their titles and front cover album art. Many of the technologies used in the implementation, were new to me.
+This is a small macOS/iOS app that enables the user to search for a music artist, and returns a list of albums, with their titles and front cover album art.
+
+Many of the technologies used in the implementation, such as Swift, Xcode and the services' APIs, were new to me.
 
 In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from Music Brainz and typically multiple queries to Cover Art Archive, per artist search.
 
@@ -36,6 +38,8 @@ Considering this is only a case, much can be done.
 * Localization, also called l10n
 * Accessiblity
 * Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
+* I perceive Cover Art Archive as slow, so optimizing that (caching either locally or on server), could be a larger project to do. One could mmap() a concatenated file
+* Tweaks: SwiftUI's CachedImage seems to unload when out of view
 
 ## Security
 
@@ -62,3 +66,7 @@ I have been on a test task force at W3C and am ISTQB certified, but without typi
     - Query that has no result
     - Different kinds of queries
 * Relevant platforms
+
+# My Own Valuation
+
+I obviously think this is somewhat all right. Many aspects or features that needs to be addressed have been identified. The code is neat, follows conventions and established practices, and duplication is avoided.
