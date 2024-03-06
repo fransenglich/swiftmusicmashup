@@ -27,7 +27,7 @@ A good article on reactive programming is: <https://redwerk.com/blog/reactive-pr
 # Aids Used
 
 No questions were asked, such as on forums or to friends, for this case. Resources used were Xcode, expected documentation and articles.
- 
+
 # Possible Improvements
 
 Considering this is only a case, much can be done.
@@ -66,6 +66,10 @@ I have been on a test task force at W3C and am ISTQB certified, but without typi
     - Query that has no result
     - Different kinds of queries
 * Relevant platforms
+
+## Development
+
+No particular attention have been paid to commit messages. I think this is all right, it's fast prototyping to get to a base where others can contribute. A message/history rewrite could be considered.
 
 # My Own Valuation
 
