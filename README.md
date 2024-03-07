@@ -5,14 +5,18 @@ This is a small macOS/iOS app that enables the user to search for a music artist
 
 Many of the technologies used in the implementation, such as Swift, Xcode and the services' APIs, were new to me.
 
-In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from Music Brainz and typically multiple queries to Cover Art Archive, per artist search.
+In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from MusicBrainz and typically multiple queries to Cover Art Archive, per artist search.
 
 Pulling from Wikipedia was omitted due to also writing a smaller part of Java, and hence to not write two cases.
 
 # The Case
 The case was described as follows:
 
-You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art Archive. MusicBrainz contains information about an artist, and what album he/she has releaed. Wikipedia has  description over the artist (which isn't in MusicBrainz') and Cover Art Archive contains images for the various albums (which MusicBrainz and Wikipedia neither contains).
+You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art Archive. MusicBrainz contains information about an artist, and what album he/she has released. Wikipedia has  description over the artist (which isn't in MusicBrainz') and Cover Art Archive contains images for the various albums (which MusicBrainz and Wikipedia neither contains).
+
+# How to Build & Run
+
+In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Install Xcode via the App Store, if needed. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
 
 # Challenges
 
@@ -36,7 +40,7 @@ Considering this is only a case, much can be done.
 
 * Conformance to relevant HIG (Human Interface Guidelines). In this case Apple's, and perhaps a company specific one
 * Localization, also called l10n
-* Accessiblity
+* Accessibility
 * Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
 * I perceive Cover Art Archive as slow, so optimizing that (caching either locally or on server), could be a larger project to do. One could mmap() a concatenated file
 * Tweaks: SwiftUI's CachedImage seems to unload when out of view
@@ -47,7 +51,7 @@ A general security mindset, and this paragraph should be considered a bit cringe
 
 ## Legal/Business
 
-In the case of this being a commercial application, a license/API key needs to be purchased from MusicBrainz, or enter somekind of agreement. In short, a legal review needs to be done.
+In the case of this being a commercial application, a license/API key needs to be purchased from MusicBrainz, or enter some kind of agreement. In short, a legal review needs to be done.
 
 ## ESG
 Might be relevant to look at energy consumption, depending on customer's requests.
@@ -56,7 +60,7 @@ Might be relevant to look at energy consumption, depending on customer's request
 
 I have been on a test task force at W3C and am ISTQB certified, but without typing a book:
 
-* Robustness for Music Brainz' format. MB's MMD format needs to be studied
+* Robustness for MusicBrainz' format. MB's MMD format needs to be studied
 * Robustness for different HTTP return codes/and errors
 * This app is simple, but a plethora of different user input/searches needs to be tested. For instance:
     - No input
