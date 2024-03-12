@@ -16,7 +16,7 @@ You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art A
 
 # How to Build & Run
 
-In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Install Xcode via the App Store, if needed. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
+Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
 
 # Challenges
 
@@ -43,11 +43,13 @@ Considering this is only a case, much can be done.
 * Accessibility
 * Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
 * I perceive Cover Art Archive as slow, so optimizing that (caching either locally or on server), could be a larger project to do. One could mmap() a concatenated file
+* The app uses MusicBrainz' "releases" while it's from one perspective more useful to use "release-groups"
+* The app loads large front covers. One can experiment with fetching Cover Art Archive's overview, and then fetch the thumbnails. That's trading one large image for two HTTP fetches and a smaller image
 * Tweaks: SwiftUI's CachedImage seems to unload when out of view
 
 ## Security
 
-A general security mindset, and this paragraph should be considered a bit cringe. Code-wise, it could be considered that a query injection is possible through the search interface, and perhaps possible DOS attacks. In short, a security review needs to be done.
+A general security mindset should be applied, and this paragraph should be considered a bit cringe. Code-wise, it could be considered that a query injection is possible through the search interface, and perhaps possible DOS attacks. In short, a security review needs to be done.
 
 ## Legal/Business
 
@@ -70,6 +72,10 @@ I have been on a test task force at W3C and am ISTQB certified, but without typi
     - Query that has no result
     - Different kinds of queries
 * Relevant platforms
+
+## Code
+
+The marshalling from JSON to Swift is very verbose. For a real scenario, I would use more time to look whether there's an option for making the library ignore un-recognised values. However, the stability and robustness of that approach can on the other hand be questioned.
 
 ## Development
 
