@@ -58,8 +58,8 @@ struct ContentView: View {
     func loadAlbums(artist: MBID) {
         let str = "https://musicbrainz.org/ws/2/release?artist="
                 + artist
-                + "&status=official&type=album&limit=100&fmt=json"
-        
+                + "&status=official&type=album&limit=20&fmt=json"
+
         loadData(url: str, execute: { (data: Data?) in
                     let serviceReturn = try JSONDecoder().decode(MBAlbums.self, from: data!)
 
@@ -121,7 +121,6 @@ struct ContentView: View {
                 Text(modelData.artist!.name)
                     .font(.system(size: 20))
                 AlbumList()
-
             }
             Spacer()
         }
