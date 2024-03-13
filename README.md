@@ -30,7 +30,7 @@ A good article on reactive programming is: <https://redwerk.com/blog/reactive-pr
 
 # Aids Used
 
-No questions were asked, such as on forums or to friends, for this case. Resources used were Xcode, expected documentation and articles.
+No questions were asked, such as on forums or to friends, for this case. Resources used were Xcode, and expected documentation and articles. I surely would have liked a review.
 
 # Possible Improvements
 
