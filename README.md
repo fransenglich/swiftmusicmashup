@@ -22,7 +22,7 @@ If you don't have the possiblity to build and run, see demo/demo.mov in the top-
 
 Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
 
-There's also a video in the material showcasing it in action. 
+There's also a video showcasing in case you can't run, demo/demo.mov.
 
 # Challenges
 
