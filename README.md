@@ -14,6 +14,10 @@ The case was described as follows:
 
 You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art Archive. MusicBrainz contains information about an artist, and what album he/she has released. Wikipedia has  description over the artist (which isn't in MusicBrainz') and Cover Art Archive contains images for the various albums (which MusicBrainz and Wikipedia neither contains). Build a service that present this information.
 
+# Demo
+
+If you don't have the possiblity to build and run, see demo/demo.mov in the top-folder of the Git repository.
+
 # How to Build & Run
 
 Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
