@@ -29,7 +29,6 @@ struct Album: Identifiable {
         self.title = title
     }
 
-
     /**
         From MBAlbums, the return from Music Brainz' query API, we extract a clean vector of Albums and return it.
      */

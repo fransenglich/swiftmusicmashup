@@ -14,5 +14,3 @@ struct MBAlbum: Decodable {
     let title: String
     let id: String
 }
-
-
