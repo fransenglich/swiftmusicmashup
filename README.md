@@ -18,6 +18,8 @@ You are supposed to construct a mashup of MusicBrainz, Wikipedia and Cover Art A
 
 Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the project file swiftmusicmashup.xcodeproj. Then, in Xcode, choose build and then run. Tested on Sonoma 14.3.1.
 
+There's also a video in the material showcasing it in action. 
+
 # Challenges
 
 This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is an elegant little language that solves many problematic areas. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce.
@@ -36,17 +38,6 @@ No questions were asked, such as on forums or to friends, for this case. Resourc
 
 Considering this is only a case, much can be done.
 
-## UI
-
-* Conformance to relevant HIG (Human Interface Guidelines). In this case Apple's, and perhaps a company specific one
-* Localization, also called l10n
-* Accessibility
-* Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
-* I perceive Cover Art Archive as slow, so optimizing that (caching either locally or on server), could be a larger project to do. One could mmap() a concatenated file
-* The app uses MusicBrainz' "releases" while it's from one perspective more useful to use "release-groups"
-* The app loads large front covers. One can experiment with fetching Cover Art Archive's overview, and then fetch the thumbnails. That's trading one large image for two HTTP fetches and a smaller image
-* Tweaks: SwiftUI's CachedImage seems to unload when out of view
-
 ## Security
 
 A general security mindset should be applied, and this paragraph should be considered a bit cringe. Code-wise, it could be considered that a query injection is possible through the search interface, and perhaps possible DOS attacks. In short, a security review needs to be done.
@@ -58,12 +49,23 @@ In the case of this being a commercial application, a license/API key needs to b
 ## ESG
 Might be relevant to look at energy consumption, depending on customer's requests.
 
+## UI
+
+* Conformance to relevant HIG (Human Interface Guidelines). In this case Apple's, and perhaps a company specific one
+* Localization, also called l10n
+* Accessibility
+* Better search interface: Update as you type, and a drop-down that lists all matching artists for the typed query
+* I perceive Cover Art Archive as slow, so optimizing that (caching either locally or on server), could be a larger project to do. One could mmap() a file with concatenated images
+* The app uses MusicBrainz' "releases" while it's from one perspective more useful to use "release-groups"
+* The app loads large front covers. One can experiment with fetching Cover Art Archive's overview, and then fetch the thumbnails. That's trading one large image for two HTTP fetches and a smaller image
+* SwiftUI's CachedImage unloads when out of view. This is the major drawback in this small app. This needs to be fixed, by replacing CachedImage with a custom view/control.
+
 ## QA and QC
 
-I have been on a test task force at W3C and am ISTQB certified, but without typing a book:
+I have been on a test task force at W3C and I am ISTQB certified, but without typing a book:
 
 * Robustness for MusicBrainz' format. MB's MMD format needs to be studied
-* Robustness for different HTTP return codes/and errors
+* Robustness for different HTTP return codes, timeouts, and errors
 * This app is simple, but a plethora of different user input/searches needs to be tested. For instance:
     - No input
     - Only spaces
@@ -73,14 +75,10 @@ I have been on a test task force at W3C and am ISTQB certified, but without typi
     - Different kinds of queries
 * Relevant platforms
 
-## Code
-
-The marshalling from JSON to Swift is very verbose. For a real scenario, I would use more time to look whether there's an option for making the library ignore un-recognised values. However, the stability and robustness of that approach can on the other hand be questioned.
-
 ## Development
 
 No particular attention have been paid to commit messages. I think this is all right, it's fast prototyping to get to a base where others can contribute. A message/history rewrite could be considered.
 
 # My Own Valuation
 
-I obviously think this is somewhat all right. Many aspects or features that needs to be addressed have been identified. The code is neat, follows conventions and established practices, and duplication is avoided.
+I think this is somewhat all right. Many aspects or features that needs to be addressed have been identified. The code is neat, follows conventions and established practices, and duplication is avoided. Much can be done for bringing this to product level.
