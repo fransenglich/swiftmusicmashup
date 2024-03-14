@@ -8,8 +8,7 @@ struct ContentView: View {
     @State private var searchText: String = ""
 
     @Environment (ModelData.self) private var modelData
-
-
+    
     /**
             A helper function that runs the closure execute for the data as returned and converted for the URL.
 

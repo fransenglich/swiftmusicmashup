@@ -1,9 +1,3 @@
-//
-//  Global.swift
-//  mashup
-//
-//  Created by Frans Englich on 2024-03-01.
-//
 
 import Foundation
 
