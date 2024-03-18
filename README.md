@@ -7,7 +7,9 @@ Many of the technologies used in the implementation, such as Swift, Xcode and th
 
 In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from MusicBrainz and typically multiple queries to Cover Art Archive, per artist search.
 
-Pulling from Wikipedia as well as coding a custom CacheImage was omitted due to also writing a smaller part of Java, and hence to not write two full cases.
+Because Björn and I miscommunicated what the case was, I pulled the break and omitted fetching from Wikipedia as well as coding a custom image display, since Swift was of little interest. Currently Apple's CachedImage is used, which unloads when out of view when inside a V/HStack. This seems to be a known issue.
+
+Still, hopefully this demonstrates dedication, and ability for coding as well as approaching new technologies.
 
 # The Case
 The case was described as follows:
