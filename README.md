@@ -7,7 +7,7 @@ Many of the technologies used in the implementation, such as Swift, Xcode and th
 
 In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from MusicBrainz and typically multiple queries to Cover Art Archive, per artist search.
 
-Because Björn and I miscommunicated what the case was, I pulled the break and omitted fetching from Wikipedia as well as coding a custom image display, since Swift was of little interest. Currently Apple's CachedImage is used, which unloads when out of view when inside a V/HStack. This seems to be a known issue.
+Because Björn and I miscommunicated what the case was, I pulled the break and *omitted fetching from Wikipedia as well as coding a custom image display*, since Swift was of little interest. Currently Apple's CachedImage is used, which unloads when out of view when inside a V/HStack. This seems to be a known issue.
 
 Still, hopefully this demonstrates dedication, and ability for coding as well as approaching new technologies.
 
@@ -28,11 +28,7 @@ Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the pr
 
 # Challenges
 
-This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is an elegant little language that solves many problematic areas. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce.
-
-    Swift/SwiftUI has also plenty of concepts and support for asynchronous tasks, as typically needed with UIs.
-
-Specific to this case was namely challenges related to the need of asynchronous tasks (the network loading) and updating the UI. Not surprisingly, Swift has measures for balancing this.
+This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is an elegant little language that solves many problematic areas. It's also fast, being reference counted machine code. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce. Swift/SwiftUI has also plenty of concepts and support for asynchronous tasks, as typically needed with UIs. Specific to this case was namely challenges related to the need of asynchronous tasks (the network loading) and updating the UI. Not surprisingly, Swift has measures for balancing this.
 
 The asynchronous network loading was done by passing a closure to URLSession. SwiftUI's way of doing dynamic interfaces is very high level. While they've found inspiration from Qt and model/view architectures, much magic and behind-the-scenes work is used for making it very simple. One expresses relationships between views (widgets/controls) and the data, and SwiftUI does the wiring, an element of reactive programming. In the implementation the data is stored in ModelData, and the views in needed bring it in with @Environment. @States and @Bindings are also used for passing data.
 
@@ -83,7 +79,7 @@ I have been on a test task force at W3C and I am ISTQB certified, but without ty
     - Different kinds of queries
 * Relevant platforms
 
-Testing would be implemented using Apple's XCTest framework. I haven't done this due to time timeconstraints.
+Testing would be implemented using Apple's XCTest framework.
 
 ## Development
 
@@ -91,4 +87,4 @@ No particular attention have been paid to commit messages. I think this is all r
 
 # My Own Valuation
 
-I think this is somewhat all right. Many aspects or features that needs to be addressed have been identified. The code is neat, follows conventions and established practices, and duplication is avoided. Much can be done for bringing this to product level.
+I think this is somewhat all right. Many aspects or features that needs to be addressed have been identified. The code is neat, follows conventions and established practices, and duplication is avoided. I think this case demonstrates dedication, ability to code as well as approaching new technologies.
