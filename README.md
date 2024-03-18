@@ -5,7 +5,7 @@ This is a small macOS/iOS app that enables the user to search for a music artist
 
 Many of the technologies used in the implementation, such as Swift, Xcode and the services' APIs, were new to me.
 
-In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries from MusicBrainz and typically multiple queries to Cover Art Archive, per artist search.
+In brief it it is implemented in Swift with SwiftUI on Sonoma/Xcode 15. It does two queries to MusicBrainz and typically multiple queries to Cover Art Archive, per artist search.
 
 Because Björn and I miscommunicated what the case was, I pulled the break and *omitted fetching from Wikipedia as well as coding a custom image display*, since Swift was of little interest. Currently Apple's CachedImage is used, which unloads when out of view when inside a V/HStack. This seems to be a known issue.
 
@@ -30,7 +30,7 @@ Install Xcode via the App Store, if needed. In the IDE Xcode on Mac, open the pr
 
 This is my first development in Xcode, and hence Swift and SwiftUI -- it was fun. Swift is an elegant little language that solves many problematic areas. It's also fast, being reference counted machine code. While it has plenty of OOP, it also has widespread use of -- welcomed -- functional elements. For instance closures (a kind of anonymous functions) and classics like map reduce. Swift/SwiftUI has also plenty of concepts and support for asynchronous tasks, as typically needed with UIs. Specific to this case was namely challenges related to the need of asynchronous tasks (the network loading) and updating the UI. Not surprisingly, Swift has measures for balancing this.
 
-The asynchronous network loading was done by passing a closure to URLSession. SwiftUI's way of doing dynamic interfaces is very high level. While they've found inspiration from Qt and model/view architectures, much magic and behind-the-scenes work is used for making it very simple. One expresses relationships between views (widgets/controls) and the data, and SwiftUI does the wiring, an element of reactive programming. In the implementation the data is stored in ModelData, and the views in needed bring it in with @Environment. @States and @Bindings are also used for passing data.
+The asynchronous network loading was done by passing a closure to URLSession. SwiftUI's way of doing dynamic interfaces is very high level. While they've found inspiration from Qt and model/view architectures, much magic and behind-the-scenes work is used for making it simple. One expresses relationships between views (widgets/controls) and the data, and SwiftUI does the wiring, an element of reactive programming. In the implementation the data is stored in ModelData, and the views in needed bring it in with @Environment. @States and @Bindings are also used for passing data.
 
 A good article on reactive programming is: <https://redwerk.com/blog/reactive-programming-in-swift/>
 
@@ -51,6 +51,7 @@ A general security mindset should be applied, and this paragraph should be consi
 In the case of this being a commercial application, a license/API key needs to be purchased from MusicBrainz, or to enter some kind of agreement. In short, a legal review needs to be done.
 
 ## ESG
+
 Might be relevant to look at energy consumption, depending on customer's requests.
 
 ## UI
