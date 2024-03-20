@@ -20,7 +20,7 @@ Björn and I also talked about how I would approach a new tech/language, and I c
 
 # Demo
 
-If you don't have the possiblity to build and run, see demo/demo.mov in the top-folder of the Git repository.
+If you don't have the possibility to build and run, see demo/demo.mov in the top-folder of the Git repository.
 
 # How to Build & Run
 
