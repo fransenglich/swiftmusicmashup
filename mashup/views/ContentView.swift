@@ -12,6 +12,9 @@ struct ContentView: View {
     /**
             A helper function that runs the closure execute for the data as returned and converted for the URL.
 
+            It's used for loadArtist() and loadAlbums(), that both does HTTP fetches. It's a prevention
+                of code duplication. The closure passed in does computation specific to each caller.
+
      - Parameter url: The URL to be loaded. Must be valid
      - Parameter execute: the closure to execute for the data
      */
@@ -48,7 +51,7 @@ struct ContentView: View {
     }
     
     /**
-        Loads the albums for an artist.
+        Loads the albums for an artist. Writes directly to modelData.
 
      The modelData is updated with the retrieved data.
 
@@ -67,7 +70,7 @@ struct ContentView: View {
     }
 
     /**
-            Loads the data for the given artist in argument.
+            Loads the data for the given artist in argument. Writes directly to modelData.
 
                 It does it in these steps:
      1. Figure out the MBID for the searched artist
@@ -76,7 +79,7 @@ struct ContentView: View {
 
             Note, the argument is the name of artist, not MBID.
      */
-    func loadFor(artistName: String) {
+    func loadArtist(artistName: String) {
         // The Beatles: b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d
 
         let encoded = artistName.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
@@ -107,7 +110,7 @@ struct ContentView: View {
                 SearchField(binding: $searchText)
                 Button("Search", action: {
                     modelData.firstSearch = false
-                    loadFor(artistName: searchText)
+                    loadArtist(artistName: searchText)
                 })
             }
 
